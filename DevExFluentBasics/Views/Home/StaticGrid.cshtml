@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<h1>Employee List</h1>
+
+ 
+
+@(Html.DevExtreme().DataGrid()
+    .ID("gridContainer")
+    .ShowBorders(true)
+    .DataSource(Model)
+    .KeyExpr("ID")
+    .Columns(c => {
+        c.Add().DataField("Id");
+        c.Add().DataField("FirstName");
+        c.Add().DataField("LastName");
+        c.Add().DataField("Position");
+        c.Add().DataField("HireDate");
+    })
+)
+
+ 
+ 

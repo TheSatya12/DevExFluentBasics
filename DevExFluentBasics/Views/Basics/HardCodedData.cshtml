@@ -1,0 +1,93 @@
+﻿@using DevExtreme.AspNet.Mvc
+
+
+<h2>Hard Coded Data</h2>
+@{
+    Html.DevExtreme()
+    .DataGrid<Person>()
+    .DataSource(
+        new[]
+        {
+            new Person
+            {
+                Id=1,
+                Name="Satya",
+                Age=20
+            },
+            new Person
+            {
+                Id=2,
+                Name="Sonu",
+                Age=30
+            },
+            new Person
+            {
+                Id=3,
+                Name="Sam",
+                Age=33
+            },
+            new Person
+            {
+                Id=4,
+                Name="bean",
+                Age=40
+            }
+        }
+    )
+    .Columns(columns =>
+    {
+        columns.AddFor(p => p.Id).Width(50);
+        columns.AddFor(p => p.Name).Alignment(HorizontalAlignment.Left);
+        columns.AddFor(p => p.Age).Alignment(HorizontalAlignment.Right);
+
+        
+    }
+    )
+    .Render();
+
+
+}
+<h2>Binding Datagrid to controller Data</h2>
+@{
+    Html.DevExtreme()
+                            .DataGrid()
+                            .DataSource(
+                                d => d.Mvc().Controller("Basics").LoadAction("GetMovieRating")
+                            )
+                            .Columns(columns =>
+                        {
+                            columns.Add().DataField("Id");
+                            columns.Add().DataField("Movie");
+                            columns.Add().DataField("Rating");
+                        })
+                        .Render();
+}
+<h2>Add Filtering,Sorting and Paging </h2>
+@{
+    Html.DevExtreme()
+                    .DataGrid()
+                    .AllowColumnResizing(true)
+                    .FilterRow(f => f.Visible(true))
+                    .Paging(p => p.PageSize(5))
+                    .DataSource(
+                        d => d.Mvc().Controller("Basics").LoadAction("GetMovieRating")
+                    )
+                    .Columns(columns =>
+                    {
+                        columns.Add().DataField("Id");
+                        columns.Add().DataField("Movie");
+                        columns.Add().DataField("Rating");
+                    }
+                    )
+                    .Render();
+
+}
+<h2>Devextreme Button</h2>
+@{
+    Html.DevExtreme().Button()
+            .Text("Click Me")
+            .OnClick(
+                "function(){alert('Clicked!');}"
+            ).Render();
+}
+ 
