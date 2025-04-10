@@ -53,7 +53,7 @@ namespace DevExFluentBasics.Controllers
         [HttpDelete]
         public IActionResult DeleteBudget(int key)
         {
-            var entity = _context.AnnualBudgets.Find(key);
+            var entity = _context.AnnualBudgets.Find(key); 
             if (entity == null) return NotFound();
 
             _context.AnnualBudgets.Remove(entity);
