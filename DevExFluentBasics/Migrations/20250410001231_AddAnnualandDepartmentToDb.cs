@@ -5,13 +5,13 @@
 namespace DevExFluentBasics.Migrations
 {
     /// <inheritdoc />
-    public partial class AddBudgetAndDepartmentToDb : Migration
+    public partial class AddAnnualandDepartmentToDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AnnualBudget",
+                name: "AnnualBudgets",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -20,11 +20,11 @@ namespace DevExFluentBasics.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AnnualBudget", x => x.Id);
+                    table.PrimaryKey("PK_AnnualBudgets", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Department",
+                name: "Departments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -37,18 +37,18 @@ namespace DevExFluentBasics.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Department", x => x.Id);
+                    table.PrimaryKey("PK_Departments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Department_AnnualBudget_AnnualBudgetId",
+                        name: "FK_Departments_AnnualBudgets_AnnualBudgetId",
                         column: x => x.AnnualBudgetId,
-                        principalTable: "AnnualBudget",
+                        principalTable: "AnnualBudgets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Department_AnnualBudgetId",
-                table: "Department",
+                name: "IX_Departments_AnnualBudgetId",
+                table: "Departments",
                 column: "AnnualBudgetId");
         }
 
@@ -56,10 +56,10 @@ namespace DevExFluentBasics.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Department");
+                name: "Departments");
 
             migrationBuilder.DropTable(
-                name: "AnnualBudget");
+                name: "AnnualBudgets");
         }
     }
 }

@@ -1,0 +1,76 @@
+﻿<h2>Creating a Controll</h2>
+<p>To create a control, start with calling the DevExtreme() HtmlHelper extension method. Then, call the builder method corresponding to the control you want to create</p>
+@(
+                //Creates a button Controll
+                Html.DevExtreme().Button()
+            )
+<p>If you are creating a control inside a code block, end the configuration with a call of the Render() method.</p>
+@{
+    Html.DevExtreme().Button().Render();
+}
+<p>Simple Options</p>
+@(
+Html.DevExtreme().Button()
+                .ID("submitButton")  // sets the "id" attribute of the control container
+                .Text("submit")      // sets the button text
+                .Width(100)         //sets button width
+            )
+<p>Day and Time</p>
+@(
+Html.DevExtreme().DateBox()
+                .Type(DateBoxType.DateTime) // sets the type using the DateBoxType .NET enum
+            )
+<p>Data grid</p>
+@{
+    Html.DevExtreme().DataGrid()
+                    .Columns(columns => //specifies column
+                    {
+                        columns.Add().DataField("CustomerId");  //add customerId to column
+                        columns.Add().DataField("OrderDate").DataType(GridColumnDataType.Date);
+
+                    })
+                    .Render();
+}
+<p>Creating Alert</p>
+@(
+Html.DevExtreme().Button()
+                .OnClick("function () { alert('The button was clicked'); }")
+            )
+<p>on click satya</p>
+@(
+Html.DevExtreme().Button()
+                            .OnClick("satya_click").Text("Save").Width(100))
+
+@(Html.DevExtreme().Button()
+.OnClick(@<text>
+        function(){
+            alert("On writing the function using text tag")
+        }
+    </text>
+)
+)
+ 
+
+<p>Pop up</p>
+@(Html.DevExtreme().Button()
+    .OnClick("showPopup").Text("PopUp")
+)
+
+
+@(Html.DevExtreme().Popup()
+    .TitleTemplate("<b>Title</b>")
+)
+
+@(Html.DevExtreme().List()
+    .ItemTemplate("<div><%= ProductName %></div>")
+)
+
+<script src="~/js/devextreme/practice.js">
+    
+</script>
+ 
+
+
+ 
+ 
+

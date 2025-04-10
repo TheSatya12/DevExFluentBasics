@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DevExFluentBasics.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250408165550_AddBudgetAndDepartmentToDb")]
-    partial class AddBudgetAndDepartmentToDb
+    [Migration("20250410001231_AddAnnualandDepartmentToDb")]
+    partial class AddAnnualandDepartmentToDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,7 +38,7 @@ namespace DevExFluentBasics.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AnnualBudget");
+                    b.ToTable("AnnualBudgets");
                 });
 
             modelBuilder.Entity("DevExFluentBasics.Models.Department", b =>
@@ -71,7 +71,7 @@ namespace DevExFluentBasics.Migrations
 
                     b.HasIndex("AnnualBudgetId");
 
-                    b.ToTable("Department");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("DevExFluentBasics.Models.Department", b =>

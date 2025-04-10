@@ -51,7 +51,7 @@ namespace DevExFluentBasics.Controllers
             return View();
         }
 
-        public IActionResult About() {
+        public IActionResult DevxNotes() {
             return View();
         }
 

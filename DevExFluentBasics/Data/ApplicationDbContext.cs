@@ -10,8 +10,8 @@ namespace DevExFluentBasics.Data
             
         }
 
-        public DbSet<AnnualBudget> AnnualBudget { get; set; }
-        public DbSet<Department> Department { get; set; }
+        public DbSet<AnnualBudget> AnnualBudgets { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

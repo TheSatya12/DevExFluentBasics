@@ -1,0 +1,31 @@
+﻿@model IEnumerable<DevExFluentBasics.Models.AnnualBudget>
+@{
+    ViewBag.Title = "Annual Budget Grid";
+}
+
+@(
+    Html.DevExtreme()
+    .DataGrid<AnnualBudget>()
+    .ID("grid")
+    .DataSource(d => d.Mvc()
+    .Controller("Budget")
+    .LoadAction("GetBudgets")
+    .InsertAction("InsertBudget")
+    .UpdateAction("UpdateBudget")
+    .DeleteAction("DeleteBudget")
+    .Key("Id")
+    )
+    .Columns(columns => {
+    columns.AddFor(m => m.Id).Caption("ID").AllowEditing(false);
+    columns.AddFor(m => m.Name).Caption("Annual Budget Year").ValidationRules(vr => vr.AddRequired());
+    })
+    .Editing(e => {
+    e.Mode(GridEditMode.Popup);
+    e.AllowUpdating(true);
+    e.AllowAdding(true);
+    e.AllowDeleting(true);
+    })
+    .SearchPanel(sp => sp.Visible(true))
+    .Paging(p => p.PageSize(10))
+    .Pager(p => p.ShowPageSizeSelector(true))
+)

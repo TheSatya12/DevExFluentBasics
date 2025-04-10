@@ -35,7 +35,7 @@ namespace DevExFluentBasics.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AnnualBudget");
+                    b.ToTable("AnnualBudgets");
                 });
 
             modelBuilder.Entity("DevExFluentBasics.Models.Department", b =>
@@ -68,7 +68,7 @@ namespace DevExFluentBasics.Migrations
 
                     b.HasIndex("AnnualBudgetId");
 
-                    b.ToTable("Department");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("DevExFluentBasics.Models.Department", b =>
